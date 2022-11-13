@@ -1,0 +1,33 @@
+# Project: sookie
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = sookie_private.res
+OBJ      = main.o $(RES)
+LINKOBJ  = main.o $(RES)
+LIBS     = -L"D:/program files (x64)/embarcadero/dev-cpp/TDM-GCC-64/lib" -L"D:/program files (x64)/embarcadero/dev-cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"D:/program files (x64)/embarcadero/dev-cpp/TDM-GCC-64/include" -I"D:/program files (x64)/embarcadero/dev-cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/program files (x64)/embarcadero/dev-cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"D:/program files (x64)/embarcadero/dev-cpp/TDM-GCC-64/include" -I"D:/program files (x64)/embarcadero/dev-cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/program files (x64)/embarcadero/dev-cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"D:/program files (x64)/embarcadero/dev-cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = sookie.exe
+CXXFLAGS = $(CXXINCS) -O2 -std=gnu++17
+CFLAGS   = $(INCS) -O2 -std=gnu++17
+DEL      = D:\program files (x64)\embarcadero\dev-cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+sookie_private.res: sookie_private.rc 
+	$(WINDRES) -i sookie_private.rc --input-format=rc -o sookie_private.res -O coff 
+

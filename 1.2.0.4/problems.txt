@@ -1,0 +1,7 @@
+init.h 
+> progress bar █ ▼
+> Ginit -> str[]
+sookie.h
+> Shift WASD
+sookie.cpp
+>rex()
